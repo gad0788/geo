@@ -6,7 +6,9 @@ pipeline{
    stages{
    stage('sonar scan for vurnalabilities'){
     steps{
-    sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=gad0788_geo'
+        withSonarQubeEnv('sonarqube'){
+        sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=gad0788_geo'
+        }
     }
    }
     stage("maven config steps"){
