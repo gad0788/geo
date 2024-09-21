@@ -4,6 +4,11 @@ pipeline{
    maven 'M2_HOME'
    }
    stages{
+   stage('sonar scan for vurnalabilities'){
+    steps{
+    sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=gad0788_geo'
+    }
+   }
     stage("maven config steps"){
         steps{
         sh 'mvn clean validate compile install test '
@@ -20,6 +25,7 @@ pipeline{
         "http://ec2-54-89-89-62.compute-1.amazonaws.com:8081/artifactory/geolocation_1/geoapp/bio_${BUILD_ID}.jar"'
         }
     }
+    
    
    }
 }
