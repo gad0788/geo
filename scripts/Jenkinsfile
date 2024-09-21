@@ -1,0 +1,14 @@
+pipeline{
+   agent any
+   tools{
+   maven 'ME2_HOME'
+   }
+   stages{
+    stage("maven"){
+        steps{
+        sh 'mvn clean validate compile install test package'
+        }
+    }
+   
+   }
+}
