@@ -16,8 +16,8 @@ pipeline{
     }
     stage('Uploading artifacts to Jfrog'){
         steps{
-        sh 'curl -uadmin:APAXDsGHWiYuC6jXqEFR2f9khMP -T target/bioMedical-0.0.2-SNAPSHOT.jar\
-        "http://ec2-54-89-89-62.compute-1.amazonaws.com:8081/artifactory/geolocation_1/${BUILD_ID}.jar"'
+        sh 'curl -uadmin:APAXDsGHWiYuC6jXqEFR2f9khMP -T target/bio*.jar\
+        "http://ec2-54-89-89-62.compute-1.amazonaws.com:8081/artifactory/geolocation_1/geoapp/bio_${BUILD_ID}.jar"'
         }
     }
    
